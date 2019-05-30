@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TelaAgendamentoComabate"></activity>
+        <activity android:name=".DetalhesCombates"></activity>
+        <activity android:name=".TelaAgendamentoComabate" />
         <activity android:name=".SetarStatus" />
         <activity android:name=".CombatesAgendar" />
         <activity android:name=".CombatesAgendados" />
