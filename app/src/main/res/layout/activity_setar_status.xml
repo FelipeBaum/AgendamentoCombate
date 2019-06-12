@@ -18,8 +18,8 @@
 
     <Button
         android:id="@+id/btPronto"
-        android:layout_width="120"
-        android:layout_height="55"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="128dp"
         android:text="Pronto"
@@ -28,8 +28,8 @@
 
     <Button
         android:id="@+id/btQuase"
-        android:layout_width="120"
-        android:layout_height="55"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="8dp"
@@ -40,8 +40,8 @@
 
     <Button
         android:id="@+id/btImpossivel"
-        android:layout_width="120"
-        android:layout_height="55"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="8dp"
         android:text="Impossível Terminar"
