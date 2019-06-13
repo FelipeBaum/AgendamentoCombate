@@ -4,9 +4,13 @@ public class Arena {
     int id_Arena;
     String nome;
 
-    public Arena(int id, String nome){
+    public Arena(int id_Arena, String nome){
     this.id_Arena = id_Arena;
     this.nome = nome;
+    }
+
+    public Arena(){
+
     }
 
     public void setId_Arena(int id_Arena) {

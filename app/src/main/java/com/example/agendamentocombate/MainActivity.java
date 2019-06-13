@@ -1,6 +1,5 @@
 package com.example.agendamentocombate;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            ParseJson parseJson = new ParseJson();
-            parseJson.parse(s);
-            pokemons = parseJson.getPokemons();
+            ParseJsonUsuario parseJsonUsuario = new ParseJsonUsuario();
+            parseJsonUsuario.parse(s);
+            pokemons = parseJsonUsuario.getPokemons();
 
             PokemonListAdapter pokeListAdapter = new PokemonListAdapter(MainActivity.this,
-                    R.layout.pokemon_item, parseJson.getPokemons());
+                    R.layout.pokemon_item, parseJsonUsuario.getPokemons());
             lvPokemon.setAdapter(pokeListAdapter);
 
-//            for (Pokemon p : parseJson.getPokemons()) {
+//            for (Pokemon p : parseJsonUsuario.getPokemons()) {
 //                try {
 //                    Bitmap img = new DownloadImageTask().execute(p.getImageUrl()).get();
 //                    p.setImagem(img);

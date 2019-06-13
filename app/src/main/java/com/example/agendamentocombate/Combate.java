@@ -20,6 +20,10 @@ public class Combate {
         this.id_arena = id_arena;
     }
 
+    public Combate(){
+
+    }
+
     public void setId_Combate(int id_Combate) {
         this.id_Combate = id_Combate;
     }

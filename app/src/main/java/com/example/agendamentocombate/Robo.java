@@ -8,13 +8,16 @@ public class Robo{
     String status;
     int id_Usuario;
 
+    public Robo(){
+
+    }
 
     public  Robo(int id_Robo, String nome, String categoria, String status, int id_Usuario){
-    this.id_Robo = id_Robo;
-    this.nome = nome;
-    this.categoria = categoria;
-    this.status = status;
-    this.id_Usuario = id_Usuario;
+        this.id_Robo = id_Robo;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.status = status;
+        this.id_Usuario = id_Usuario;
     }
 
     public void setId_Robo(int id_Robo) {
