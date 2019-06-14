@@ -16,6 +16,10 @@ public class Usuario {
         this.nivel = nivel;
     }
 
+    public Usuario(){
+
+    }
+
     public void setId_Usuario(int id_Usuario) {
         this.id_Usuario = id_Usuario;
     }
