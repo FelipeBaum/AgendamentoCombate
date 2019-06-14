@@ -1,5 +1,6 @@
 package com.example.agendamentocombate;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,13 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-<<<<<<< HEAD
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
-=======
->>>>>>> 1ecd861c694c00e2bd86221a3287cafab13d289a
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etUsuario = findViewById(R.id.etUsuario);
     EditText etSenha = findViewById(R.id.etSenha);
     Button btlogin = findViewById(R.id.btLogin);
+    String url="http://www.mocky.io/v2/5d02cabd3100005a00ab31a7";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +38,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DownloadDeDados down=new DownloadDeDados();
-        down.execute();
+        down.execute(url);
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
                for (int i = 0;i<usuario.size();i++){
 
-                   //  TODO: web service que vai puxar as informações do usuario
-
-
                    if (usuario.get(i).getUsuario().equals(etUsuario.getText()) && usuario.get(i).getSenha().equals(etSenha.getText())){
                         if (usuario.get(i).getNivel().equals( "competidor")){
-                            Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class)
+                            Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class);
                             ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
                             startActivity(intent);
                         }
                         else if ((usuario.get(i).getNivel().equals( "organizador"))){
-                            Intent intent = new Intent(MainActivity.this, TelaAgendamentoComabate.class)
+                            Intent intent = new Intent(MainActivity.this, TelaAgendamentoComabate.class);
                             ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
                             startActivity(intent);
                         }
@@ -82,36 +79,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-<<<<<<< HEAD
-            ParseJsonUsuario parseJson = new ParseJsonUsuario();
-            parseJson.parse(s);
+            ParseJson parseJson = new ParseJson();
+            parseJson.parseUsuario(s);
             usuario = parseJson.getUsuario();
-
- //           PokemonListAdapter pokeListAdapter = new PokemonListAdapter(MainActivity.this,
- //                  R.layout.pokemon_item, parseJson.getPokemons());
-//            lvPokemon.setAdapter(pokeListAdapter);
-=======
-            ParseJsonUsuario parseJsonUsuario = new ParseJsonUsuario();
-            parseJsonUsuario.parse(s);
-            pokemons = parseJsonUsuario.getPokemons();
-
-            PokemonListAdapter pokeListAdapter = new PokemonListAdapter(MainActivity.this,
-                    R.layout.pokemon_item, parseJsonUsuario.getPokemons());
-            lvPokemon.setAdapter(pokeListAdapter);
->>>>>>> 1ecd861c694c00e2bd86221a3287cafab13d289a
-
-//            for (Pokemon p : parseJsonUsuario.getPokemons()) {
-//                try {
-//                    Bitmap img = new DownloadImageTask().execute(p.getImageUrl()).get();
-//                    p.setImagem(img);
-//                    pokeListAdapter.notifyDataSetChanged();
-//                } catch (ExecutionException e) {
-//                    e.printStackTrace();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
         }
 
         private String downloadJson(String urlString) {
