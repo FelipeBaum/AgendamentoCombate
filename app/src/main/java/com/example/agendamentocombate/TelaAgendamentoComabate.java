@@ -15,11 +15,9 @@ public class TelaAgendamentoComabate extends AppCompatActivity {
     }
     TextView tvRobo1 = findViewById(R.id.tvRobo1);
     TextView tvRobo2 = findViewById(R.id.tvRobo2);
-    Button btSalvar = findViewById(R.id.btSalvar);
-    TextView textView7 = findViewById(R.id.textView7);
-    TextView textView8 = findViewById(R.id.textView8);
     EditText etData = findViewById(R.id.etData);
-    EditText editText4 = findViewById(R.id.editText4);
+    EditText editText4 = findViewById(R.id.etArena);
+    Button btSalvar = findViewById(R.id.btSalvar);
 
 
 
