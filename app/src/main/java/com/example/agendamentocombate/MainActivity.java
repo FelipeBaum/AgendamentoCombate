@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -18,26 +19,52 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+
+    List<Usuario> usuario=new ArrayList<Usuario>();
+    EditText etUsuario = findViewById(R.id.etUsuario);
+    EditText etSenha = findViewById(R.id.etSenha);
+    Button btlogin = findViewById(R.id.btLogin);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DownloadDeDados down=new DownloadDeDados();
+        down.execute();
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
-                if ( etUsuario)
+               for (int i = 0;i<usuario.size();i++){
+
+                   //  TODO: web service que vai puxar as informações do usuario
+
+
+                   if (usuario.get(i).getUsuario().equals(etUsuario.getText()) && usuario.get(i).getSenha().equals(etSenha.getText())){
+                        if (usuario.get(i).getNivel().equals( "competidor")){
+                            Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class)
+                            ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
+                            startActivity(intent);
+                        }
+                        else if ((usuario.get(i).getNivel().equals( "organizador"))){
+                            Intent intent = new Intent(MainActivity.this, TelaAgendamentoComabate.class)
+                            ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
+                            startActivity(intent);
+                        }
+                    }
+               }
+                Toast.makeText(MainActivity.this, "ERRO!! usuario nao encontrado", Toast.LENGTH_LONG).show();
             }
         });
     }
-        EditText etUsuario =findViewById(R.id.etUsuario);
-        EditText etSenha = findViewById(R.id.etSenha);
-        Button btlogin = findViewById(R.id.btLogin);
+
+
 
     private class DownloadDeDados extends AsyncTask<String, Void, String> {
 
@@ -53,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            ParseJson parseJson = new ParseJson();
+            ParseJsonUsuario parseJson = new ParseJsonUsuario();
             parseJson.parse(s);
-            pokemons = parseJson.getPokemons();
+            usuario = parseJson.getUsuario();
 
-            PokemonListAdapter pokeListAdapter = new PokemonListAdapter(MainActivity.this,
-                    R.layout.pokemon_item, parseJson.getPokemons());
-            lvPokemon.setAdapter(pokeListAdapter);
+ //           PokemonListAdapter pokeListAdapter = new PokemonListAdapter(MainActivity.this,
+ //                  R.layout.pokemon_item, parseJson.getPokemons());
+//            lvPokemon.setAdapter(pokeListAdapter);
 
 //            for (Pokemon p : parseJson.getPokemons()) {
 //                try {
@@ -114,15 +141,7 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-     //   //  TODO: web service que vai puxar as informações do usuario
-    //if (competidor){
-    //    Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class)
-    //    startActivity(intent);
-    //}
-    //if(organizador){
-    //    Intent intent = new Intent(MainActivity.this, TelaAgendamentoComabate.class)
-    //    startActivity(intent);
-    //}
+
 
 
 
