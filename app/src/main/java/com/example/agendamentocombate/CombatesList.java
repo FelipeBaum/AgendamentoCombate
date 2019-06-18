@@ -7,10 +7,10 @@ public class CombatesList {
     String nome_robo2;
     String status_robo1;
     String status_robo2;
-    Date data;
+    String data;
     String arena;
 
-    public CombatesList(String nome_robo1, String nome_robo2,String status_robo1,String status_robo2, Date data, String arena){
+    public CombatesList(String nome_robo1, String nome_robo2,String status_robo1,String status_robo2, String data, String arena){
         this.nome_robo1 = nome_robo1;
         this.nome_robo2 = nome_robo2;
         this.status_robo2 = status_robo2;
@@ -55,11 +55,11 @@ public class CombatesList {
         this.status_robo2 = status_robo2;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

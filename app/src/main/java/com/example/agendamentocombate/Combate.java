@@ -7,17 +7,22 @@ public class Combate {
     int id_Combate;
     int id_robo1;
     int id_robo2;
-    Date data;
+    String data;
     String categoria;
     int id_arena;
 
-    public Combate(int id_Combate, int id_robo1, int id_robo2, Date data, String categoria, int id_arena){
+    public Combate(int id_Combate, int id_robo1, int id_robo2, String data, String categoria, int id_arena){
         this.id_Combate = id_Combate;
         this.id_robo1 = id_robo1;
         this.id_robo2 = id_robo2;
         this.data = data;
         this.categoria = categoria;
         this.id_arena = id_arena;
+    }
+
+    @Override
+    public String toString() {
+        return "" + id_Combate + ";" + id_robo1 + ";" + id_robo2 + ";" + data + ";" + categoria + ";" + id_arena;
     }
 
     public Combate(){
@@ -36,7 +41,7 @@ public class Combate {
         this.id_robo2 = id_robo2;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -60,7 +65,7 @@ public class Combate {
         return id_robo2;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
