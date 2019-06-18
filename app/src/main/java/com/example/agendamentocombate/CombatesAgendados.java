@@ -2,6 +2,7 @@ package com.example.agendamentocombate;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 public class CombatesAgendados extends AppCompatActivity {
 
@@ -9,5 +10,8 @@ public class CombatesAgendados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combates_agendados);
+
+
     }
+
 }
