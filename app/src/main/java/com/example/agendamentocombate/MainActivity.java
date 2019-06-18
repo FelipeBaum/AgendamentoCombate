@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-               for (int i = 0;i<usuario.size();i++){
+                for (int i = 0;i<usuario.size();i++){
 
-                   if (usuario.get(i).getUsuario().equals(etUsuario.getText()) && usuario.get(i).getSenha().equals(etSenha.getText())){
+                    if (usuario.get(i).getUsuario().equals(etUsuario.getText()) && usuario.get(i).getSenha().equals(etSenha.getText())){
                         if (usuario.get(i).getNivel().equals( "competidor")){
                             Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class);
                             ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     }
-               }
+                }
                 Toast.makeText(MainActivity.this, "ERRO!! usuario nao encontrado", Toast.LENGTH_LONG).show();
             }
         });

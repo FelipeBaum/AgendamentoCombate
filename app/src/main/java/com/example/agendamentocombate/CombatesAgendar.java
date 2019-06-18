@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class CombatesAgendar extends AppCompatActivity {
     private ListView listCombates;
+    private Button btMudar;
     private List listaCombates = new ArrayList();
 
     @Override
@@ -33,6 +35,7 @@ public class CombatesAgendar extends AppCompatActivity {
         setContentView(R.layout.activity_combates_agendar);
 
         listCombates = findViewById(R.id.lvCombates);
+        btMudar = findViewById(R.id.btMudar);
 
         DownloadDeDados downloadDeDados = new DownloadDeDados();
         downloadDeDados.execute("https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
@@ -42,6 +45,14 @@ public class CombatesAgendar extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent intent=new Intent(CombatesAgendar.this, TelaAgendamentoComabate.class);
                 ((Intent) intent).putExtra("combate",listaCombates.get(position).toString());
+                startActivity(intent);
+            }
+        });
+
+        btMudar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent=new Intent(CombatesAgendar.this, CombatesAgendados.class);
                 startActivity(intent);
             }
         });
