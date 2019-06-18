@@ -17,6 +17,15 @@ public class TelaCombateRobosUsuarios extends AppCompatActivity {
         //adapter = new SimpleCursorAdapter(MainActivity.this,
                 //R.layout.combaterobousuario);
         //lvLista.setAdapter(adapter);
+        //ListView listView = findViewById(R.id.lvCombates);
+
+        //ParseJson parseJson = new ParseJson();
+        // parseJson.parse(s);
+        // combates = parseJson.getCombate();
+
+        //CombatesAdapter adapter = new combatesAdapter(R.layout.activity_combates_agendados, ParseJson.getcombates());
+
+        //listView.setAdapter(adapter);
 
     }
 }
