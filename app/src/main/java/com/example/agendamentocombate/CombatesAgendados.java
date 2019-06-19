@@ -77,7 +77,7 @@ public class CombatesAgendados extends AppCompatActivity {
             JSONTokener jsonTokener = new JSONTokener(s);
             try {
                 JSONObject json = new JSONObject(jsonTokener);
-                JSONArray jsonArray = json.getJSONArray("pokemon");
+                JSONArray jsonArray = json.getJSONArray("combate");
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     CombatesList jsoncombates = new CombatesList(
