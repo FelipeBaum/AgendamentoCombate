@@ -27,38 +27,45 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     List<Usuario> usuario=new ArrayList<Usuario>();
-    EditText etUsuario = findViewById(R.id.etUsuario);
-    EditText etSenha = findViewById(R.id.etSenha);
-    Button btlogin = findViewById(R.id.btLogin);
+    EditText etUsuario;
+    EditText etSenha;
+    Button btlogin;
     String url="http://www.mocky.io/v2/5d02cabd3100005a00ab31a7";
+    int a=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        etUsuario = findViewById(R.id.etUsuario);
+        etSenha = findViewById(R.id.etSenha);
+        btlogin = findViewById(R.id.btLogin);
+
         DownloadDeDados down=new DownloadDeDados();
         down.execute(url);
         btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-
                 for (int i = 0;i<usuario.size();i++){
-
-                    if (usuario.get(i).getUsuario().equals(etUsuario.getText()) && usuario.get(i).getSenha().equals(etSenha.getText())){
-                        if (usuario.get(i).getNivel().equals( "competidor")){
+                    if (usuario.get(i).getUsuario().equals(etUsuario.getText().toString()) && usuario.get(i).getSenha().equals(etSenha.getText().toString())){
+                        if (usuario.get(i).getNivel().equals( "Competidor")){
                             Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class);
+                            ((Intent) intent).putExtra("usuario" , usuario.get(i).getId_Usuario());
+                            startActivity(intent);
+
+                        }
+                        else if ((usuario.get(i).getNivel().equals( "Organizador"))){
+                            Intent intent = new Intent(MainActivity.this, CombatesAgendar.class);
                             ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
                             startActivity(intent);
                         }
-                        else if ((usuario.get(i).getNivel().equals( "organizador"))){
-                            Intent intent = new Intent(MainActivity.this, TelaAgendamentoComabate.class);
-                            ((Intent) intent).putExtra("usuario" , usuario.get(i).toString());
-                            startActivity(intent);
-                        }
+                        a=1;
                     }
                 }
-                Toast.makeText(MainActivity.this, "ERRO!! usuario nao encontrado", Toast.LENGTH_LONG).show();
+                if(a==0) {
+                    Toast.makeText(MainActivity.this, "ERRO!! usuario nao encontrado", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

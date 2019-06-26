@@ -7,6 +7,8 @@ public class CombatesList {
     String nome_robo2;
     String status_robo1;
     String status_robo2;
+    String usuario_robo1;
+    String usuario_robo2;
     String data;
     String arena;
 
@@ -19,8 +21,35 @@ public class CombatesList {
         this.arena = arena;
     }
 
+    public CombatesList(String nome_robo1, String nome_robo2, String usuario_robo1, String usuario_robo2, String status_robo1, String status_robo2, String data, String arena) {
+        this.nome_robo1 = nome_robo1;
+        this.nome_robo2 = nome_robo2;
+        this.usuario_robo1 = usuario_robo1;
+        this.usuario_robo2 = usuario_robo2;
+        this.status_robo1 = status_robo1;
+        this.status_robo2 = status_robo2;
+        this.data = data;
+        this.arena = arena;
+    }
+
     public CombatesList(){
 
+    }
+
+    public String getUsuario_robo1() {
+        return usuario_robo1;
+    }
+
+    public void setUsuario_robo1(String usuario_robo1) {
+        this.usuario_robo1 = usuario_robo1;
+    }
+
+    public String getUsuario_robo2() {
+        return usuario_robo2;
+    }
+
+    public void setUsuario_robo2(String usuario_robo2) {
+        this.usuario_robo2 = usuario_robo2;
     }
 
     public String getNome_robo1() {

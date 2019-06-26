@@ -27,7 +27,8 @@ import java.util.List;
 public class CombatesAgendados extends AppCompatActivity {
     private ListView listCombates;
     private Button btMudar;
-    private List listaCombates = new ArrayList();
+    private List<CombatesList> listaCombates = new ArrayList();
+    private static final String TAG = "Agendados";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class CombatesAgendados extends AppCompatActivity {
         btMudar = findViewById(R.id.btMudar);
 
         DownloadDeDados downloadDeDados = new DownloadDeDados();
-        downloadDeDados.execute("https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
+        downloadDeDados.execute("http://www.mocky.io/v2/5d12bb840e0000db07b4a086");
 
         listCombates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,10 +88,11 @@ public class CombatesAgendados extends AppCompatActivity {
                             jsonArray.getJSONObject(i).getString("status_robo2"),
                             jsonArray.getJSONObject(i).getString("data"),
                             jsonArray.getJSONObject(i).getString("arena"));
+                    if(jsoncombates.getData().equals(null))
                     listaCombates.add(jsoncombates);
                 }
 
-                CombateAdapter ListAdapter = new CombateAdapter(CombatesAgendados.this,
+                CombatesOrganizadorAdapter ListAdapter = new CombatesOrganizadorAdapter(CombatesAgendados.this,
                         R.layout.combatesorganizador, listaCombates);
                 listCombates.setAdapter(ListAdapter);
 

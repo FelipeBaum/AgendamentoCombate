@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -27,6 +27,8 @@ import java.util.List;
 public class TelaCombateRobosUsuarios extends AppCompatActivity {
     private ListView listCombates;
     private List listaCombates = new ArrayList();
+    static String id="2";
+    private static final String TAG = "CombatesUsuarios";
 
 
     @Override
@@ -34,10 +36,13 @@ public class TelaCombateRobosUsuarios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_combate_robos_usuarios);
 
+        Intent intent=getIntent();
+        //id = intent.getStringExtra("usuario");
+
         listCombates = findViewById(R.id.lvLista);
 
         DownloadDeDados downloadDeDados = new DownloadDeDados();
-        downloadDeDados.execute("https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
+        downloadDeDados.execute("http://www.mocky.io/v2/5d12bb840e0000db07b4a086");
 
         listCombates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,14 +77,19 @@ public class TelaCombateRobosUsuarios extends AppCompatActivity {
                     CombatesList jsoncombates = new CombatesList(
                             jsonArray.getJSONObject(i).getString("nome_robo1"),
                             jsonArray.getJSONObject(i).getString("nome_robo2"),
+                            jsonArray.getJSONObject(i).getString("usuario_robo1"),
+                            jsonArray.getJSONObject(i).getString("usuario_robo2"),
                             jsonArray.getJSONObject(i).getString("status_robo1"),
                             jsonArray.getJSONObject(i).getString("status_robo2"),
                             jsonArray.getJSONObject(i).getString("data"),
                             jsonArray.getJSONObject(i).getString("arena"));
+                    Log.e(TAG, ""+jsoncombates.getUsuario_robo1());
+                    Log.e(TAG, ""+id);
+                    if(id.equals(jsoncombates.getUsuario_robo1()) || id.equals(jsoncombates.getUsuario_robo2()))
                     listaCombates.add(jsoncombates);
                 }
 
-                CombateAdapter ListAdapter = new CombateAdapter(TelaCombateRobosUsuarios.this,
+                CombatesCompetidorAdapter ListAdapter = new CombatesCompetidorAdapter(TelaCombateRobosUsuarios.this,
                         R.layout.combaterobousuario, listaCombates);
                 listCombates.setAdapter(ListAdapter);
 
