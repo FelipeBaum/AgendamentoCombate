@@ -11,25 +11,21 @@ public class CombatesList {
     String usuario_robo2;
     String data;
     String arena;
+    String categoria;
 
-    public CombatesList(String nome_robo1, String nome_robo2,String status_robo1,String status_robo2, String data, String arena){
-        this.nome_robo1 = nome_robo1;
-        this.nome_robo2 = nome_robo2;
-        this.status_robo2 = status_robo2;
-        this.status_robo1 = status_robo1;
-        this.data = data;
-        this.arena = arena;
+    @Override
+    public String toString() {
+        return nome_robo1+';'+nome_robo2+';'+status_robo1+';'+status_robo2+';'+usuario_robo1+';'+usuario_robo2+';'+data+';'+arena+';'+categoria;
     }
 
-    public CombatesList(String nome_robo1, String nome_robo2, String usuario_robo1, String usuario_robo2, String status_robo1, String status_robo2, String data, String arena) {
+    public CombatesList(String nome_robo1, String nome_robo2, String status_robo1, String status_robo2, String data, String arena,String categoria) {
         this.nome_robo1 = nome_robo1;
         this.nome_robo2 = nome_robo2;
-        this.usuario_robo1 = usuario_robo1;
-        this.usuario_robo2 = usuario_robo2;
         this.status_robo1 = status_robo1;
         this.status_robo2 = status_robo2;
         this.data = data;
         this.arena = arena;
+        this.categoria = categoria;
     }
 
     public CombatesList(){

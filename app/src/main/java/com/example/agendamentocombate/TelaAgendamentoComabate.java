@@ -17,6 +17,17 @@ public class TelaAgendamentoComabate extends AppCompatActivity {
         setContentView(R.layout.activity_tela_agendamento_comabate);
 
         Intent intent = getIntent();
+        String frase = intent.getStringExtra("combate");
+        String array[] = new String[8];
+        array = frase.split(";");
+        tvRobo1 = findViewById(R.id.tvRobo1);
+        tvRobo2 = findViewById(R.id.tvRobo2);
+        etData = findViewById(R.id.etData);
+        editText4 = findViewById(R.id.etArena);
+        btSalvar = findViewById(R.id.btSalvar);
+
+        tvRobo1.setText(array[0]);
+        tvRobo2.setText(array[1]);
 
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,11 +37,11 @@ public class TelaAgendamentoComabate extends AppCompatActivity {
         });
     }
 
-    TextView tvRobo1 = findViewById(R.id.tvRobo1);
-    TextView tvRobo2 = findViewById(R.id.tvRobo2);
-    EditText etData = findViewById(R.id.etData);
-    EditText editText4 = findViewById(R.id.etArena);
-    Button btSalvar = findViewById(R.id.btSalvar);
+    TextView tvRobo1;
+    TextView tvRobo2;
+    EditText etData;
+    EditText editText4;
+    Button btSalvar;
 
 
 

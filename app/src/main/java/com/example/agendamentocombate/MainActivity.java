@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     if (usuario.get(i).getUsuario().equals(etUsuario.getText().toString()) && usuario.get(i).getSenha().equals(etSenha.getText().toString())){
                         if (usuario.get(i).getNivel().equals( "Competidor")){
                             Intent intent = new Intent(MainActivity.this, TelaCombateRobosUsuarios.class);
-                            ((Intent) intent).putExtra("usuario" , usuario.get(i).getId_Usuario());
+                            ((Intent) intent).putExtra("usuario" , ""+usuario.get(i).getId_Usuario());
                             startActivity(intent);
 
                         }

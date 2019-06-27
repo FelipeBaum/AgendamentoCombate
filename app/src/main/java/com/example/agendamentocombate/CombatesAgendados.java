@@ -39,7 +39,7 @@ public class CombatesAgendados extends AppCompatActivity {
         btMudar = findViewById(R.id.btMudar);
 
         DownloadDeDados downloadDeDados = new DownloadDeDados();
-        downloadDeDados.execute("http://www.mocky.io/v2/5d12bb840e0000db07b4a086");
+        downloadDeDados.execute("http://www.mocky.io/v2/5d1548830e00008500a1127f");
 
         listCombates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,8 +87,9 @@ public class CombatesAgendados extends AppCompatActivity {
                             jsonArray.getJSONObject(i).getString("status_robo1"),
                             jsonArray.getJSONObject(i).getString("status_robo2"),
                             jsonArray.getJSONObject(i).getString("data"),
-                            jsonArray.getJSONObject(i).getString("arena"));
-                    if(jsoncombates.getData().equals(null))
+                            jsonArray.getJSONObject(i).getString("arena"),
+                            jsonArray.getJSONObject(i).getString("categoria"));
+                    if(!jsoncombates.getData().equals(""))
                     listaCombates.add(jsoncombates);
                 }
 
